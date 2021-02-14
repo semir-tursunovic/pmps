@@ -1,11 +1,8 @@
-# Put your stlink folder here so make burn will work.
-STLINK=../../stlink
-
 # Binaries will be generated with this name (.elf, .bin, .hex, etc)
 PROJ_NAME=main
 
 # Put your STM32F4 library code directory here
-STM_COMMON=../../../STM32F407
+STM_COMMON=../../sdk/
 STM32CUBEPROG:= ../../stmcubeprog/bin/STM32_Programmer.sh -vb 1 -q -c port=SWD 
 
 # Put your source files here (or *.c, etc)
@@ -51,10 +48,6 @@ CFLAGS += -I $(STM_COMMON)/Drivers/STM32F4xx_HAL_Driver/Inc
 CFLAGS += -I $(STM_COMMON)/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
 CFLAGS += -I $(STM_COMMON)/Drivers/CMSIS/Include 
 CFLAGS += -I $(STM_COMMON)/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-#CFLAGS += -I$(STM_COMMON)/Utilities/STM32F4-Discovery
-#CFLAGS += -I$(STM_COMMON)/Libraries/CMSIS/Include 
-#CFLAGS += -I$(STM_COMMON)/Libraries/CMSIS/ST/STM32F4xx/Include
-#CFLAGS += -I$(STM_COMMON)/Libraries/STM32F4xx_StdPeriph_Driver/inc
 
 # add startup file to build
 SRCS += $(STM_COMMON)/Drivers/startup_stm32f4xx.s
@@ -73,8 +66,6 @@ $(PROJ_NAME).elf: $(SRCS)
 	$(SIZE) -B  $(PROJ_NAME).elf
 	rm -rf *.o *.s
 	ls -l $(PROJ_NAME).bin
-
-
 
 clean:
 	rm -rf *.o $(PROJ_NAME).elf $(PROJ_NAME).hex $(PROJ_NAME).bin *.s
