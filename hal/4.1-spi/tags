@@ -1,0 +1,133 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AHBPrescTable	system_stm32f4xx.c	/^  const uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};$/;"	v
+APBPrescTable	system_stm32f4xx.c	/^const uint8_t APBPrescTable[8]  = {0, 0, 0, 0, 1, 2, 3, 4};$/;"	v
+BusFault_Handler	stm32f4xx_it.c	/^void BusFault_Handler(void)$/;"	f
+CC	Makefile	/^CC = $(GNUGCC)\/arm-none-eabi-gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS  = -g -O2 -Wall -Tstm32_flash.ld $/;"	m
+CLEAR_BIT	stm32f4xx.h	230;"	d
+CLEAR_REG	stm32f4xx.h	234;"	d
+DISABLE	stm32f4xx.h	/^  DISABLE = 0U, $/;"	e	enum:__anon2
+DebugMon_Handler	stm32f4xx_it.c	/^void DebugMon_Handler(void)$/;"	f
+ENABLE	stm32f4xx.h	/^  ENABLE = !DISABLE$/;"	e	enum:__anon2
+ERROR	stm32f4xx.h	/^  ERROR = !SUCCESS$/;"	e	enum:__anon3
+ErrorStatus	stm32f4xx.h	/^} ErrorStatus;$/;"	t	typeref:enum:__anon3
+FlagStatus	stm32f4xx.h	/^} FlagStatus, ITStatus;$/;"	t	typeref:enum:__anon1
+FunctionalState	stm32f4xx.h	/^} FunctionalState;$/;"	t	typeref:enum:__anon2
+GNUGCC	Makefile	/^GNUGCC = $(STM_COMMON)\/gcc-arm-none-eabi\/bin$/;"	m
+HardFault_Handler	stm32f4xx_it.c	/^void HardFault_Handler(void)$/;"	f
+IS_FUNCTIONAL_STATE	stm32f4xx.h	212;"	d
+ITStatus	stm32f4xx.h	/^} FlagStatus, ITStatus;$/;"	t	typeref:enum:__anon1
+LIS302DL_CTRL_REG1	lis302dl.h	15;"	d
+LIS302DL_CTRL_REG2	lis302dl.h	16;"	d
+LIS302DL_MULTIPLE	lis302dl.h	13;"	d
+LIS302DL_OUT_X	lis302dl.h	18;"	d
+LIS302DL_OUT_Y	lis302dl.h	19;"	d
+LIS302DL_OUT_Z	lis302dl.h	20;"	d
+LIS302DL_READ	lis302dl.h	12;"	d
+LIS302DL_REG_WHO_AM_I	lis302dl.h	9;"	d
+LIS302DL_REG_WHO_AM_I_VAL	lis302dl.h	10;"	d
+LIS302DL_STATUS_REG	lis302dl.h	17;"	d
+MAX_PRINT_STRING_SIZE	misc.h	6;"	d
+MODIFY_REG	stm32f4xx.h	240;"	d
+MemManage_Handler	stm32f4xx_it.c	/^void MemManage_Handler(void)$/;"	f
+NMI_Handler	stm32f4xx_it.c	/^void NMI_Handler(void)$/;"	f
+OBJCOPY	Makefile	/^OBJCOPY = $(GNUGCC)\/arm-none-eabi-objcopy$/;"	m
+OBJS	Makefile	/^OBJS = $(SRCS:.c=.o)$/;"	m
+PLL_M	system_stm32f4xx.c	148;"	d	file:
+PLL_N	system_stm32f4xx.c	149;"	d	file:
+PLL_P	system_stm32f4xx.c	152;"	d	file:
+PLL_Q	system_stm32f4xx.c	155;"	d	file:
+POSITION_VAL	stm32f4xx.h	242;"	d
+PRINT_ARG_TYPE_BINARY_BYTE	misc.h	8;"	d
+PRINT_ARG_TYPE_BINARY_HALFWORD	misc.h	9;"	d
+PRINT_ARG_TYPE_BINARY_WORD	misc.h	10;"	d
+PRINT_ARG_TYPE_CHARACTER	misc.h	14;"	d
+PRINT_ARG_TYPE_DECIMAL_BYTE	misc.h	11;"	d
+PRINT_ARG_TYPE_DECIMAL_HALFWORD	misc.h	12;"	d
+PRINT_ARG_TYPE_DECIMAL_WORD	misc.h	13;"	d
+PRINT_ARG_TYPE_FLOAT	misc.h	16;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_BYTE	misc.h	17;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_HALFWORD	misc.h	18;"	d
+PRINT_ARG_TYPE_HEXADECIMAL_WORD	misc.h	19;"	d
+PRINT_ARG_TYPE_MASK_CHAR_STRING	misc.h	22;"	d
+PRINT_ARG_TYPE_STRING	misc.h	15;"	d
+PRINT_ARG_TYPE_UNKNOWN	misc.h	20;"	d
+PROJ_NAME	Makefile	/^PROJ_NAME=main$/;"	m
+PendSV_Handler	stm32f4xx_it.c	/^void PendSV_Handler(void)$/;"	f
+READ_BIT	stm32f4xx.h	232;"	d
+READ_REG	stm32f4xx.h	238;"	d
+RESET	stm32f4xx.h	/^  RESET = 0U, $/;"	e	enum:__anon1
+SET	stm32f4xx.h	/^  SET = !RESET$/;"	e	enum:__anon1
+SET_BIT	stm32f4xx.h	228;"	d
+SIZE	Makefile	/^SIZE =  $(GNUGCC)\/arm-none-eabi-size$/;"	m
+SPI1_CS_HIGH	spi.h	25;"	d
+SPI1_CS_LOW	spi.h	26;"	d
+SPI_BaudRatePrescaler_128	spi.h	13;"	d
+SPI_BaudRatePrescaler_16	spi.h	10;"	d
+SPI_BaudRatePrescaler_2	spi.h	7;"	d
+SPI_BaudRatePrescaler_256	spi.h	14;"	d
+SPI_BaudRatePrescaler_32	spi.h	11;"	d
+SPI_BaudRatePrescaler_4	spi.h	8;"	d
+SPI_BaudRatePrescaler_64	spi.h	12;"	d
+SPI_BaudRatePrescaler_8	spi.h	9;"	d
+SRCS	Makefile	/^SRCS = main.c $/;"	m
+STLINK	Makefile	/^STLINK=..\/..\/stlink$/;"	m
+STM32CUBEPROG	Makefile	/^STM32CUBEPROG:= ..\/..\/stmcubeprog\/bin\/STM32_Programmer.sh -vb 1 -q -c port=SWD $/;"	m
+STM32F4	stm32f4xx.h	69;"	d
+STM32F407xx	stm32f4xx.h	83;"	d
+STM_COMMON	Makefile	/^STM_COMMON=..\/..\/..\/STM32F407$/;"	m
+SUCCESS	stm32f4xx.h	/^  SUCCESS = 0U,$/;"	e	enum:__anon3
+SVC_Handler	stm32f4xx_it.c	/^void SVC_Handler(void)$/;"	f
+SYSTIM_KEEP_ALIVE	delay.h	9;"	d
+SYSTIM_TIMEOUT	delay.h	10;"	d
+SetSysClock	system_stm32f4xx.c	/^static void SetSysClock(void)$/;"	f	file:
+SysTick_Handler	stm32f4xx_it.c	/^void SysTick_Handler(void)$/;"	f
+SystemCoreClock	system_stm32f4xx.c	/^  uint32_t SystemCoreClock = 168000000;$/;"	v
+SystemCoreClockUpdate	system_stm32f4xx.c	/^void SystemCoreClockUpdate(void)$/;"	f
+SystemInit	system_stm32f4xx.c	/^void SystemInit(void)$/;"	f
+SystemInit_ExtMemCtl	system_stm32f4xx.c	/^void SystemInit_ExtMemCtl(void)$/;"	f
+TIM2_HandleStruct	delay.c	/^TIM_HandleTypeDef TIM2_HandleStruct;$/;"	v
+TIM_HandleStruct	delay.c	/^TIM_HandleTypeDef TIM_HandleStruct;$/;"	v
+UART_HandleStruct	usart.c	/^UART_HandleTypeDef UART_HandleStruct;$/;"	v
+USART_115200	usart.h	12;"	d
+USART_9600	usart.h	11;"	d
+UsageFault_Handler	stm32f4xx_it.c	/^void UsageFault_Handler(void)$/;"	f
+VECT_TAB_OFFSET	system_stm32f4xx.c	143;"	d	file:
+WRITE_REG	stm32f4xx.h	236;"	d
+__DELAY_H	delay.h	2;"	d
+__LIS302DL_H_	lis302dl.h	2;"	d
+__MISC_H_	misc.h	2;"	d
+__SPI1_H_	spi.h	2;"	d
+__STM32F4xx_CMSIS_VERSION	stm32f4xx.h	131;"	d
+__STM32F4xx_CMSIS_VERSION_MAIN	stm32f4xx.h	127;"	d
+__STM32F4xx_CMSIS_VERSION_RC	stm32f4xx.h	130;"	d
+__STM32F4xx_CMSIS_VERSION_SUB1	stm32f4xx.h	128;"	d
+__STM32F4xx_CMSIS_VERSION_SUB2	stm32f4xx.h	129;"	d
+__STM32F4xx_H	stm32f4xx.h	55;"	d
+__STM32F4xx_IT_H	stm32f4xx_it.h	23;"	d
+__USART2_H_	usart.h	2;"	d
+chk4TimeoutSYSTIM	delay.c	/^uint8_t chk4TimeoutSYSTIM(uint32_t btime, uint32_t period)$/;"	f
+deinitSYSTIM	delay.c	/^void deinitSYSTIM(void)$/;"	f
+delay_ms	delay.c	/^void delay_ms(uint32_t ms)$/;"	f
+delay_us	delay.c	/^void delay_us(uint32_t us)$/;"	f
+getDNumMISC	misc.c	/^void getDNumMISC(uint8_t *dnum, uint32_t num)$/;"	f
+getDataLIS302DL	lis302dl.c	/^void getDataLIS302DL(int8_t * accel_data)$/;"	f
+getSYSTIM	delay.c	/^uint32_t getSYSTIM(void)$/;"	f
+getStr4NumMISC	misc.c	/^void getStr4NumMISC(uint16_t type, uint32_t  * num, uint8_t * rstr)$/;"	f
+hspi1	spi.c	/^SPI_HandleTypeDef hspi1;$/;"	v
+initLIS302DL	lis302dl.c	/^void initLIS302DL(void)$/;"	f
+initSPI1	spi.c	/^void initSPI1(uint16_t prescaler)$/;"	f
+initSYSTIM	delay.c	/^void initSYSTIM(void)$/;"	f
+initUSART2	usart.c	/^void initUSART2(uint32_t baudrate)$/;"	f
+main	main.c	/^int main(void)$/;"	f
+printUSART2	usart.c	/^void printUSART2(char *str, ... )$/;"	f
+putDNumMISC	misc.c	/^void putDNumMISC(uint8_t *dnum, uint16_t *m, uint8_t *r_str)$/;"	f
+putcharUSART2	usart.c	/^void putcharUSART2(uint8_t data)$/;"	f
+rxByteSPI1	spi.c	/^uint8_t rxByteSPI1(void)$/;"	f
+sprintUSART2	usart.c	/^void sprintUSART2(uint8_t * str)$/;"	f
+txByteSPI1	spi.c	/^uint8_t txByteSPI1(uint8_t data)$/;"	f
