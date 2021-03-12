@@ -41,11 +41,6 @@ where:
 <li> <b>S</b>  </li>
 <li> <b>Rd</b> destination register </li>
 <li> <b>operands</b> arguments for the instruction </li>
-
-- [cc] is compare flag
-- [S]
-- [Rd] -> Destination register
-- [operands] -> Arguments for the instruction
 </ul>
 
 Following images describes format of the ARM instruction.
