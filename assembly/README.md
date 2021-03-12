@@ -1,4 +1,4 @@
-# Intrudaction 
+# Introduction
 In this part of the course we will take a look at the ARM assembly intruction set and internal arhitecture of the ARM CPU. 
 
 # ARM-32 Registers
