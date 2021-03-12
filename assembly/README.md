@@ -1,7 +1,7 @@
-#Intrudaction 
+# Intrudaction 
 In this part of the course we will take a look at the ARM assembly intruction set and internal arhitecture of the ARM CPU. 
 
-#ARM-32 Registers
+# ARM-32 Registers
 For the purposes of the normal programmer in "User Mode" the ARM has 15 registers. R0-R12 are free for us to do whatever we want, R13 is the Stack Pointer (also addressable as SP), R15 is the Program Counter (PC)
 
 R14 may be surprising to those familiar with other CPUs, when we call a subroutine (With BL - Branch and Link) the return address is not pushed onto the stack, instead it's moved into R14/LR... to return from the subroutine we need to move the R14/LR register into R15/PC.
@@ -51,7 +51,7 @@ where:
 Following images describes format of the ARM instruction.
 ![ARM-Instruction-Format](./images/arm-instruction-format.png  "ARM Instruction format")
 ## Data processing
-###MOV
+### MOV
 MOV instruction is used for loading the immediate value to register and for copying value from one register to another. Basic sytanx of the MOV instruction is:
 ```
 mov destination,source
@@ -75,13 +75,13 @@ mov r0,pc				; this will coppy value from the PC  to register r0
 mov  r0,#0x1234			; load value 0x1234 to register r0 
 mov  r1,r0,LSL 4			; load value 56 to register r1
 ```
-###MVN
+### MVN
 This instruction works just like the **MOV** instruction, but instead of loading the provided value to the destination register, this instruction will load first complement of the specified value. For example, instruction
 ```
 mvn r0,#0x00FF
 ```
 will load value *#0xff00* to the register *r0.*
-###ADD
+### ADD
 Basic sytanx of the ADD instruction is:
 ```
 add 		r0,r1		; r0 = r0 + r1
@@ -92,7 +92,7 @@ This instruction will add values from two registers and move them to destination
 
 Addin sufix c to this command will take in consideration the value of the carry flag.
 
-###SUB
+### SUB
 Basic sytanx of the SUB instruction is:
 ```
 sub 		r0,r1		; r0 = r0 - r1
@@ -103,7 +103,7 @@ This instruction will add values from two registers and move them to destination
 
 Addin sufix c to this command will take in consideration the value of the carry flag.
 
-###RSB
+### RSB
 This instruction works just like the SUB instruction. Only differenc is that the position of operans are swapped.
 Basic sytanx of the RSB instruction is:
 ```
