@@ -7,14 +7,11 @@
 
 .section .text.main
 main:
-	bl o_cmp
-	bl o_bitwise
 	bl o_mov
 	bl o_add
 	bl o_sub
 	bl o_rsb
-
-
+	bl o_bitwise
 
 	b loop
 
