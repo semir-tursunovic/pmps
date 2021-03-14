@@ -94,7 +94,7 @@ This instruction works just like the **MOV** instruction, but instead of loading
 ```
 mvn r0,#0x00FF
 ```
-will load value *#0xffffff00* to the register *r0.*
+will load value *#0xff00* to the register *r0.*
 ### ADD
 Basic sytanx of the ADD instruction is:
 ```
@@ -156,8 +156,128 @@ These instructions update the N, Z, C. For example, the CMP instruction will set
 </ul>
 
 Instructions **TST** and **TEQ** will not affect C flag and this flag will keep previous value.
-## Extending basic instructions
+## Conditional eqecution
+The following table lists the available condition codes, their meanings, and the status of the flags that are tested.
 
+| 	Condition Code 	| Meaning (for cmp or subs) 	|	Status of Flags|
+|---					|---						|---|
+|EQ 					|	Equal 				|Z=1|
+|NE 					|Not Equal 				|Z=0|
+|GT 					|Signed Greater Than 		|(Z=0) && (N=V)|
+|LT 					|Signed Less Than 			|N!=V|
+|GE 					|Signed Greater Than or Equal |N=V|
+|LE 					|Signed Less Than or Equal 	|(Z=1) \|\| (N!=V)|
+|CS or HS 			|Unsigned Higher or Same (or Carry Set)| 	C=1|
+|CC or LO 			|Unsigned Lower (or Carry Clear) |	C=0|
+|MI 					|Negative (or Minus) 		|N=1|
+|PL 					|Positive (or Plus) 			|N=0|
+|AL 	 				|Always executed 	 		|-|
+|NV 	 				|Never executed 	 		|-|
+|VS 	 				|Signed Overflow 	 		|V=1|
+|VC 	 				|No signed Overflow 	 	|V=0|
+|HI 	 				|Unsigned Higher 			|(C=1) && (Z=0)|
+|LS 	 				|Unsigned Lower or same 	|(C=0) \|\| (Z=0)|
+
+Syntax: IT{x{y{z}}} cond
+
+- cond specifies the condition for the first instruction in the IT block
+- x specifies the condition switch for the second instruction in the IT block
+- y specifies the condition switch for the third instruction in the IT block
+- z specifies the condition switch for the fourth instruction in the IT block
+
+The structure of the IT instruction is “IF-Then-(Else)” and the syntax is a construct of the two letters T and E:
+
+- IT refers to If-Then (next instruction is conditional)
+- ITT refers to If-Then-Then (next 2 instructions are conditional)
+- ITE refers to If-Then-Else (next 2 instructions are conditional)
+- ITTE refers to If-Then-Then-Else (next 3 instructions are conditional)
+- ITTEE refers to If-Then-Then-Else-Else (next 4 instructions are conditional)
+
+Each instruction inside the IT block must specify a condition suffix that is either the same or logical inverse. This means that if you use ITE, the first and second instruction (If-Then) must have the same condition suffix and the third (Else) must have the logical inverse of the first two. Here are some examples from the ARM reference manual which illustrates this logic:
+
+```
+ITTE   NE           ; Next 3 instructions are conditional
+ANDNE  R0, R0, R1   ; ANDNE does not update condition flags
+ADDSNE R2, R2, #1   ; ADDSNE updates condition flags
+MOVEQ  R2, R3       ; Conditional move
+
+ITE    GT           ; Next 2 instructions are conditional
+ADDGT  R1, R0, #55  ; Conditional addition in case the GT is true
+ADDLE  R1, R0, #48  ; Conditional addition in case the GT is not true
+
+ITTEE  EQ           ; Next 4 instructions are conditional
+MOVEQ  R0, R1       ; Conditional MOV
+ADDEQ  R2, R2, #10  ; Conditional ADD
+ANDNE  R3, R3, #1   ; Conditional AND
+BNE.W  dloop        ; Branch instruction can only be used in the last instruction of an IT block
+```
+
+Wrong syntax:
+
+```
+IT     NE           ; Next instruction is conditional     
+ADD    R0, R0, R1   ; Syntax error: no condition code used in IT block.
+```
+
+Here are the conditional codes and theire opposite:
+<table>
+<thead><tr><th title="Field #1" colspan="2">Condition Code</th>
+<th title="Field #2" colspan="2">Opposite</th>
+</tr></thead>
+<tbody><tr>
+<td>Code </td>
+<td>	Meaning</td>
+<td> 	Code </td>
+<td>	Meaning</td>
+</tr>
+<tr>
+<td>EQ 	</td>
+<td>Equal </td>
+<td>	NE </td>
+<td>	 Not Equal</td>
+</tr>
+<tr>
+<td>HS(or CS) </td>
+<td>	Unsigned higher or same(or carry set) </td>
+<td>	LO(or CC) </td>
+<td>	 Unsigned lower (or carry clear)</td>
+</tr>
+<tr>
+<td>MI </td>
+<td>	Negative </td>
+<td>	PL 	</td>
+<td> Positive or Zero</td>
+</tr>
+<tr>
+<td>VS </td>
+<td>	Signed Overflow</td>
+<td> 	VC 	 </td>
+<td>No Signed Overflow</td>
+</tr>
+<tr>
+<td>HI </td>
+<td>	Unsigned Higher </td>
+<td>	LS 	</td>
+<td> Unsigned Lower or Same</td>
+</tr>
+<tr>
+<td>GE </td>
+<td>	Signed Greater Than or Equal </td>
+<td>	LT 	</td>
+<td> Signed Less Than</td>
+</tr>
+<tr>
+<td>GT </td>
+<td>	 Signed Greater Than</td>
+<td> 	LE </td>
+<td>	 Signed Less Than or Equal</td>
+</tr>
+<tr>
+<td>AL(or omitted)</td>
+<td> 	 Always Executed </td>
+<td colspan="2">	There is no opposite to AL</td>
+</tr>
+</tbody></table>
 ## Flow control
 For the flow control we can use following instructions:
 ```
@@ -166,3 +286,7 @@ bl <cond> 	label	; coppy address of the next instruction to the LR and jump to t
 bx<cond>	label	; coppy content of the LR to PC (this is euqal to return from subroutine)
 ```
 
+#Reference
+
+1. [Peter Cockerell Book](http://www.peter-cockerell.net/aalp/html/frames.html)  
+2. [Azeria Labs](https://azeria-labs.com/writing-arm-assembly-part-1/)
