@@ -94,7 +94,7 @@ This instruction works just like the **MOV** instruction, but instead of loading
 ```
 mvn r0,#0x00FF
 ```
-will load value *#0xff00* to the register *r0.*
+will load value *#0xffffff00* to the register *r0.*
 ### ADD
 Basic sytanx of the ADD instruction is:
 ```
