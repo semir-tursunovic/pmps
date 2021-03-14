@@ -46,7 +46,9 @@ example a signed overflow on an addition.</li>
 to digital signal processing (DSP </li>
 <li> <b>GE</b> - The Greater than or Equal flags</li>
 </ul>
+
 # ARM Instruction set
+
 ## Syntax
 General syntax of the ARM instruction is:
 ```
@@ -64,6 +66,7 @@ where:
 
 Following images describes format of the ARM instruction.
 ![ARM-Instruction-Format](./images/arm-instruction-format.png  "ARM Instruction format")
+
 ## Data processing
 ### MOV
 MOV instruction is used for loading the immediate value to register and for copying value from one register to another. Basic sytanx of the MOV instruction is:
