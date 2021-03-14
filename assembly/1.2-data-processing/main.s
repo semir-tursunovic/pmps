@@ -1,18 +1,20 @@
 	.syntax unified
 	.cpu cortex-m4
 	.fpu softvfp
+	.syntax unified
 	.thumb
 
 .global main
 
 .section .text.main
+
 main:
 	bl o_mov
 	bl o_add
 	bl o_sub
 	bl o_rsb
 	bl o_bitwise
-
+	bl o_cmp
 	b loop
 
 o_mov:
@@ -27,10 +29,10 @@ o_mov:
 o_add:
 	mov r0,0xff
 	mvn r1,r0
-	mov r3,#0
-	add r2,r2,r1
-	adds r2,r1
-	adc r2,r3
+	mov r2,#0
+	add r0,r0,r1
+	adds r0,#1
+	adcs r2,r0
 	bx r14
 
 o_sub:
@@ -45,7 +47,7 @@ o_sub:
 
 o_rsb:
 	mov r0,#20
-	mov r1,#16
+	mvn r1,#16
 	mov r3,#0
 	mov r2,r0
 	rsb r2,r2,r1
@@ -61,17 +63,22 @@ o_bitwise:
 	bx r14
 
 o_cmp:
-	mov r0,#0x0f
-	mov r1,#0xf0
-	mov r2,#0x0f
+	mov r0,#0x00
+	mvn r0,r0
+	mov r1,#0x01
+	mov r2,0x00ff
+	mov r3,0xff00
+
+	cmn r0,r1
 	cmp r0,r1
-	cmp r0,r2
-	cmn	r0,r1
-	cmn r0,r2
-	teq	r0,r1
-	teq r0,r2
-	tst	r0,r1
-	tst r0,r2
+	tst r2,r3
+	mov r0,#1
+	mov r1,#1
+	cmn r0,r1
+	tst r2,r3
+	teq r2,r3
+	bx r14
+
 loop:
 	nop
 	nop
