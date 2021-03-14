@@ -1,5 +1,5 @@
 # Introduction
-In this part of the course we will take a look at the ARM assembly intruction set and internal arhitecture of the ARM CPU. 
+In this part of the course we will take a look at the ARM assembly intruction set and internal arhitecture of the ARM CPU.
 
 # ARM-32 Registers
 For the purposes of the normal programmer in "User Mode" the ARM has 15 registers. R0-R12 are free for us to do whatever we want, R13 is the Stack Pointer (also addressable as SP), R15 is the Program Counter (PC)
@@ -27,6 +27,25 @@ This poses a problem, as nesting subroutines will lose the return value, if this
 |R14 |	LR/LK			|Link register		|
 |R15 |	PC				|System program counter				|
 
+The Application Program Status Register (APSR) holds copies of the Arithmetic Logic Unit (ALU) status flags. They are also known as the condition code flags. They are used to determine whether conditional instructions are executed or not.
+
+![xPSR Register](images/arm-xpsr-register.png  "xPSR Register")
+
+where
+<ul>
+<li> <b>N</b> - Negative condition flag. Set to bit[31] of the result of the instruction. If the result is
+regarded as a two's complement signed integer, then the processor sets N to 1 if the result
+is negative, and sets N to 0 if it is positive or zero. </li>
+<li> <b>Z</b> - Zero condition flag. Set to 1 if the result of the instruction is zero, and to 0 otherwise. A
+result of zero often indicates an equal result from a comparison. </li>
+<li> <b>C</b> - Carry condition flag. Set to 1 if the instruction results in a carry condition, for example an
+unsigned overflow on an addition. </li>
+<li> <b>V</b> - Overflow condition flag. Set to 1 if the instruction results in an overflow condition, for
+example a signed overflow on an addition.</li>
+<li> <b>Q</b> - Set to 1 to indicate overflow or saturation occurred in some instructions, normally related
+to digital signal processing (DSP </li>
+<li> <b>GE</b> - The Greater than or Equal flags</li>
+</ul>
 # ARM Instruction set
 ## Syntax
 General syntax of the ARM instruction is:
@@ -54,7 +73,7 @@ mov destination,source
 
 <b> Loading the immediate value</b>
 ```
-mov  r0,#0x1234			; load value 0x1234 to register r0 
+mov  r0,#0x1234			; load value 0x1234 to register r0
 mov  r1,#56				; load value 56 to register r1
 mov  r2,#0x12340000		; this will generate compiler error because we can only load 2 bytes using the MOV instruction
 ```
@@ -67,7 +86,7 @@ mov r0,pc				; this will coppy value from the PC  to register r0
 
 <b> Loading the immediate value larger then 2 bytes</b>
 ```
-mov  r0,#0x1234			; load value 0x1234 to register r0 
+mov  r0,#0x1234			; load value 0x1234 to register r0
 mov  r1,r0,LSL 4			; load value 56 to register r1
 ```
 ### MVN
@@ -114,9 +133,29 @@ orr				r0,r1,r2		;r0 = r1 | r2
 eor				r0,r1,r2		;r0 = r1 ^ r2
 bic 				r0,r1,r2		;r0 = r1 & (~r2)
 ```
-
 ### Comparison operations
+Basic sytanx for comparison instruction is
+```
+<op><cc> Rn,Operand2
+```
+We can use following operations:
+<ul>
+<li><b>CMP</b> - Compare (Flags set to result of (Rn − Operand2))</li>
+<li><b>CMN</b> - Compare negative (Flags set to result of (Rn + Operand2))</li>
+<li><b>TST</b> - bitwise test (Flags set to result of (Rn AND Operand2).)</li>
+<li><b>TEQ</b> -  test equivalence (Flags set to result of (Rn EOR Operand2))</li>
+</ul>
+Comparisons produce no results – they just set condition codes. Ordinary instructions will also set condition codes if the “S” bit is set. The “S” bit is implied for comparison instructions.
 
+These instructions update the N, Z, C. For example, the CMP instruction will set the confition codes as follows:
+<ul>
+        <li> N =1 if the most significant bit of (r1 - r2) is 1, i.e. r2 > r1 </li>
+        <li> Z = 1 if (r1 - r2) = 0, i.e. r1 = r2 </li>
+        <li> C = 1 if r1 and r2 are both unsigned integers AND (r1 < r2) </li>
+        <li> V = 1 if r1 and r2 are both signed integers AND (r1 < r2)</li>
+</ul>
+
+Instructions **TST** and **TEQ** will not affect C flag and this flag will keep previous value.
 ## Extending basic instructions
 
 ## Flow control
